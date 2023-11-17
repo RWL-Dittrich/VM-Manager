@@ -1,0 +1,22 @@
+﻿services:
+  vm-manager:
+    image: vm-manager
+    build:
+      context: .
+      dockerfile: vm-manager/Dockerfile
+    depends_on:
+      - database
+    ports:
+      - 8080:8080
+  
+  database:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: vmmanager
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: vmmanager
+    volumes:
+      - database:/var/lib/postgresql/data
+
+volumes:
+  database:

@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Renci.SshNet;
 using vm_manager.Models;
 using vm_manager.Services;
-using ConnectionInfo = Microsoft.AspNetCore.Http.ConnectionInfo;
 
 namespace vm_manager.Controllers;
 
@@ -23,7 +22,7 @@ public class HomeController : Controller
     {
         var connectionInfo = new Renci.SshNet.ConnectionInfo("10.2.10.2",
             "root",
-            new PrivateKeyAuthenticationMethod("root", new PrivateKeyFile(@"C:\Users\robin\.ssh\id_rsa")));
+            new PasswordAuthenticationMethod("root", "password"));
 
         _jobService.ScheduleJob(connectionInfo, new List<string>
         {
