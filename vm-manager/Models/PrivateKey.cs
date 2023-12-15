@@ -15,7 +15,7 @@ public class PrivateKey
     
     public string PublicKeyString { get; set; }
 
-    public string Passphrase { get; set; }
+    public string? Passphrase { get; set; }
     
     
 }

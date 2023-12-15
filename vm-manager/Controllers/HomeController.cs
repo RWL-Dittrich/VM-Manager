@@ -20,24 +20,19 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var connectionInfo = new Renci.SshNet.ConnectionInfo("10.2.10.2",
-            "root",
-            new PasswordAuthenticationMethod("root", "password"));
-
-        _jobService.ScheduleJob(connectionInfo, new List<string>
-        {
-            "apt update",
-        });
+        // var connectionInfo = new Renci.SshNet.ConnectionInfo("10.2.10.2",
+        //     "root",
+        //     new PasswordAuthenticationMethod("root", "password"));
+        //
+        // _jobService.ScheduleJob(connectionInfo, new List<string>
+        // {
+        //     "apt update",
+        // });
         
         
         return View();
     }
-
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
+    
     [Route("/job/{jobId}/output")]
     public IActionResult GetJobOutput(int jobId)
     {
